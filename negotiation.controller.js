@@ -123,7 +123,7 @@ async function sendQuote(req, res) {
        WHERE n.job_id = $1 AND n.status = 'open' AND j.handyman_id = $2`,
       [jobId, handymanId]
     );
-    if (!neg) return res.status(404).json({ success: false, message: 'Negotiation not found or not authorised' });
+    if (!neg) return res.status(404).json({ success: false, message: 'Negotiation not found or not authorized' });
 
     const commissionRate = parseFloat(neg.commission_rate);
     const netEarnings = parseFloat((quotedPrice * (1 - commissionRate)).toFixed(2));
